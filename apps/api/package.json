@@ -1,0 +1,51 @@
+{
+  "name": "@local/server",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun --env-file=../../.env --env-file=../../.env.config run --watch src/index.ts",
+    "clean": "rm -rf .turbo node_modules dist",
+    "clean:outs": "rm -rf dist",
+    "start": "bun run dist/index.js",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "build": "tsc",
+    "build:cli": "tsup",
+    "build:local": "bun --env-file=../../.env --env-file=../../.env.config build  ./src/index.ts --outdir ./dist --target bun",
+    "build:bun": "/root/.bun/bin/bun build ./src/index.ts --outdir ./dist --target bun",
+    "nightly": "bun --env-file=../../.env --env-file=../../.env.config run ./src/scripts/nightly.ts",
+    "cache:reset": "bun --env-file=../../.env --env-file=../../.env.config run ./src/scripts/nightly/redisInit.ts && bun --env-file=../../.env run ./src/scripts/nightly/cacheRosters.ts",
+    "with-env": "bun --env-file=../../.env --"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
+    "@elysiajs/swagger": "^1.0.5",
+    "@sinclair/typebox": "^0.32.34",
+    "@t3-oss/env-core": "^0.10.1",
+    "elysia": "^1.0.26",
+    "nanoid": "^5.0.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@local/eslint-config": "workspace:*",
+    "@local/prettier-config": "workspace:*",
+    "@local/tsconfig": "workspace:*",
+    "@local/validators": "workspace:*",
+    "@types/chalk-animation": "^1.6.3",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.14.9",
+    "bun-types": "^1.1.17",
+    "dotenv-cli": "^7.4.2",
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2",
+    "type-fest": "^4.20.1",
+    "typescript": "^5.5.2"
+  },
+  "prettier": "@local/prettier-config"
+}

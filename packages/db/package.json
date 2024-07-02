@@ -42,9 +42,9 @@
     "@local/tsconfig": "workspace:*",
     "dotenv-cli": "^7.4.2",
     "drizzle-kit": "^0.22.6",
-    "eslint": "^9.4.0",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5"
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.2"
   },
   "prettier": "@local/prettier-config"
 }
